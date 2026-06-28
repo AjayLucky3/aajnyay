@@ -2001,6 +2001,15 @@ td, th {
   transform: translateY(0);
 }
 
+/* Auth Card Container */
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  border-color: var(--border);
+}
+
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 1024px) {
   .hero-section {
@@ -2115,6 +2124,30 @@ td, th {
   
   .chat-msg {
     max-width: 95%;
+  }
+
+  /* Mobile 3D Flattening and Layout Adjustments */
+  .portal-card, .glass-card, .gps-card, .tilt-card, .library-card {
+    transform: none !important;
+    perspective: none !important;
+    transform-style: flat !important;
+  }
+  .portal-card .portal-icon, .portal-card h3, .portal-card p {
+    transform: none !important;
+  }
+  .portal-card:hover {
+    transform: translateY(-4px) !important;
+  }
+  .portal-card.selected {
+    transform: translateY(-4px) !important;
+  }
+  .library-card:hover::after {
+    display: none !important; /* Disable rotation glow animation to preserve mobile processor cycles */
+  }
+  
+  /* Responsive Auth Card padding */
+  .auth-card {
+    padding: 1.5rem !important;
   }
 }
 

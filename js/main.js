@@ -50,6 +50,7 @@ function initTheme() {
 /* --- 3D TILT EFFECT WITH SPECULAR GLOWS --- */
 function initTiltEffect() {
   document.addEventListener('mousemove', (e) => {
+    if (window.innerWidth < 768) return; // Disable tilt on mobile
     const card = e.target.closest('.tilt-card');
     if (!card) return;
     
@@ -120,13 +121,19 @@ function animateScene() {
   const scene = document.querySelector('.scene-3d');
   if (!scene) return;
   
+  const isMobile = window.innerWidth < 768;
+  
   // Eased coordinates (linear interpolation)
+  if (isMobile) {
+    targetMouseX = 0;
+    targetMouseY = 0;
+  }
   mouseX += (targetMouseX - mouseX) * 0.08;
   mouseY += (targetMouseY - mouseY) * 0.08;
   
   // Rotate the entire scene in 3D perspective
-  const tiltX = -mouseY * 15; // Max 15 degrees tilt
-  const tiltY = mouseX * 15;
+  const tiltX = isMobile ? 0 : -mouseY * 15; // Max 15 degrees tilt
+  const tiltY = isMobile ? 0 : mouseX * 15;
   scene.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
   
   // Sinusoidal float timeline
@@ -155,9 +162,9 @@ function animateScene() {
     const floatY = Math.sin(time * 1.5 + cfg.delay) * cfg.dist;
     
     // 2. Calculate mouse parallax offset
-    const px = mouseX * cfg.speed * 25;
-    const py = mouseY * cfg.speed * 25;
-    const pz = cfg.speed * 25; // Z translation maps depth
+    const px = isMobile ? 0 : mouseX * cfg.speed * 25;
+    const py = isMobile ? 0 : mouseY * cfg.speed * 25;
+    const pz = isMobile ? 0 : cfg.speed * 25; // Z translation maps depth
     
     // Apply 3D translations
     el.style.transform = `translate3d(${px}px, ${py + floatY}px, ${pz}px)`;
@@ -462,9 +469,14 @@ function initDepthScrollTransitions() {
   if (elements.length === 0) return;
   
   function updateScrollTransforms() {
+    const isMobile = window.innerWidth < 768;
     const viewportHeight = window.innerHeight;
     
     elements.forEach(el => {
+      if (isMobile) {
+        el.style.transform = '';
+        return;
+      }
       // Do not conflict if mouse is currently hovering over the card
       if (el.matches(':hover')) return;
       
