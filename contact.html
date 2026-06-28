@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - AajNyay | Support & FAQ Center</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1"></div>
+    <div class="mesh-glow mesh-glow-2"></div>
+    <div class="mesh-glow mesh-glow-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gps.html" class="nav-link">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link">AI Navigator</a></li>
+        <li><a href="emergency.html" class="nav-link">Emergency Help</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login / Sign Up <i data-lucide="log-in"></i></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Workspace -->
+  <main class="section-wrapper" style="padding-top: 8rem; min-height: 85vh;">
+    
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:3rem; margin-bottom:5rem; align-items:start;">
+      <!-- Column 1: Contact Form -->
+      <section class="glass-panel reveal active">
+        <h2 style="font-size:1.6rem; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="mail" style="color:var(--accent);"></i> Get in Touch</h2>
+        <p style="margin-bottom:1.5rem;">Have questions, suggestions, or encountered issues with our GPS guides? Submit a message and our support team will respond within 48 hours.</p>
+        
+        <form id="contact-form" onsubmit="handleContactSubmit(event)">
+          <div style="display:flex; flex-direction:column; gap:1.25rem;">
+            <div>
+              <label style="font-size:0.9rem; font-weight:600; margin-bottom:0.4rem; display:block;">Your Full Name</label>
+              <input type="text" class="gps-text-input" placeholder="e.g. Rajesh Kumar" required>
+            </div>
+            
+            <div>
+              <label style="font-size:0.9rem; font-weight:600; margin-bottom:0.4rem; display:block;">Email Address</label>
+              <input type="email" class="gps-text-input" placeholder="e.g. rajesh@example.com" required>
+            </div>
+            
+            <div>
+              <label style="font-size:0.9rem; font-weight:600; margin-bottom:0.4rem; display:block;">Legal Category (Optional)</label>
+              <select class="gps-text-input" style="padding-right:1rem;">
+                <option value="none">Choose Category...</option>
+                <option value="upi">UPI / Cyber Fraud</option>
+                <option value="salary">Unpaid Salary</option>
+                <option value="rent">Rental Dispute</option>
+                <option value="property">Property Dispute</option>
+                <option value="consumer">Consumer Grievance</option>
+                <option value="other">Other issue</option>
+              </select>
+            </div>
+            
+            <div>
+              <label style="font-size:0.9rem; font-weight:600; margin-bottom:0.4rem; display:block;">Message / Support Request</label>
+              <textarea class="gps-textarea-input" placeholder="Detail your query..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-full">Send Message <i data-lucide="send"></i></button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Column 2: Searchable FAQs -->
+      <section class="glass-panel reveal active">
+        <h2 style="font-size:1.6rem; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="help-circle" style="color:var(--accent);"></i> Frequently Asked Questions</h2>
+        <p style="margin-bottom:1.5rem;">Quick answers to common queries regarding AajNyay's GPS and AI Navigator actions.</p>
+        
+        <div class="faq-accordion" id="faq-accord">
+          <div class="faq-item glass-card" id="faq-1">
+            <button class="faq-trigger" onclick="toggleFAQ('faq-1')">
+              <span>Is AajNyay a government portal?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                <p>No. AajNyay is an independent, non-profit educational LegalTech platform. However, all our guidance, checklists, and references are sourced directly from verified government guidelines, legislative acts, and municipal directives.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item glass-card" id="faq-2">
+            <button class="faq-trigger" onclick="toggleFAQ('faq-2')">
+              <span>Can AajNyay represent me in court?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                <p>No. AajNyay provides educational legal guidance, statutory references, and checklist audits. It does not provide legal representation or replace professional legal advocates. For court filings and formal notices, we recommend consulting a certified advocate or your local DLSA center.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item glass-card" id="faq-3">
+            <button class="faq-trigger" onclick="toggleFAQ('faq-3')">
+              <span>How secure is my data on AajNyay?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                <p>Your privacy is our priority. In our current client-side deployment, all details you enter into the Legal GPS or converse with the AI Navigator are processed locally in your browser session. We do not store or transmit your sensitive legal inputs to remote servers.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item glass-card" id="faq-4">
+            <button class="faq-trigger" onclick="toggleFAQ('faq-4')">
+              <span>Are the downloaded Action Plans legally binding?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                <p>No. The Action Plans are structured educational checklists to help you gather evidence, avoid mistakes, and contact the right authorities in sequence. They are not legal briefs, but they serve as an excellent preparatory files when consulting lawyers or submitting complaints.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved. Registered support terminal.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/voice.js"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+    
+    function toggleFAQ(itemId) {
+      const item = document.getElementById(itemId);
+      if (!item) return;
+      
+      const content = item.querySelector('.faq-content');
+      const isActive = item.classList.contains('active');
+      
+      // Close other items
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('active');
+        const c = el.querySelector('.faq-content');
+        if (c) c.style.maxHeight = null;
+      });
+      
+      if (!isActive) {
+        item.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        item.classList.remove('active');
+        content.style.maxHeight = null;
+      }
+    }
+    
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      window.showToast('Message submitted successfully! We will contact you soon.', 'success');
+      document.getElementById('contact-form').reset();
+    }
+  </script>
+</body>
+</html>

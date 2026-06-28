@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Navigator - AajNyay | Intelligent Legal Guide</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1"></div>
+    <div class="mesh-glow mesh-glow-2"></div>
+    <div class="mesh-glow mesh-glow-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gps.html" class="nav-link">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link active">AI Navigator</a></li>
+        <li><a href="emergency.html" class="nav-link">Emergency Help</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login / Sign Up <i data-lucide="log-in"></i></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fullscreen Chat Workspace -->
+  <main class="section-wrapper" style="padding-top: 8rem; min-height: 85vh; display: flex; flex-direction: column; justify-content: center;">
+    
+    <div class="section-header reveal active" style="margin-bottom: 2rem; text-align: left; max-width: 100%;">
+      <span class="section-label">Intelligent Guide</span>
+      <h2 class="section-title">AajNyay AI Navigator</h2>
+      <p class="section-desc">Describe your situation. The Navigator will detect the legal category and ask exactly 3 clarifying questions to determine urgency and draft your action plan.</p>
+    </div>
+    
+    <div class="glass-panel assistant-panel reveal-3d active" style="max-width: 950px; width:100%; margin:0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 15px 35px var(--glass-shadow);">
+      
+      <!-- LEFT COLUMN: Holographic AI Assistant Visualization Core -->
+      <div class="assistant-visual-core" style="background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.02) 0%, rgba(var(--accent-rgb), 0.02) 100%); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.2rem 2rem; position: relative; overflow: hidden; min-height: 380px;">
+        
+        <h3 style="font-size: 1.25rem; font-family: var(--font-display); font-weight: 800; color: var(--primary); margin-bottom: 1.5rem; text-align: center; z-index: 2; display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="bot" style="color:var(--accent);"></i> AI Navigator
+        </h3>
+        
+        <!-- Hologram Container -->
+        <div class="ai-hologram-container">
+          <!-- Sine wave visualizer overlay -->
+          <canvas id="orb-wave-canvas" class="wave-canvas"></canvas>
+          
+          <div class="ai-hologram-ring"></div>
+          <div class="ai-hologram-ring-2"></div>
+          
+          <!-- Pulsating AI Orb -->
+          <div id="hologram-orb" class="ai-hologram-orb"></div>
+        </div>
+        
+        <div class="assistant-status" style="z-index: 2; margin-top: 1.8rem; background: var(--bg-primary); border: 1px solid var(--border); padding: 0.45rem 1.1rem; border-radius: var(--radius-full); box-shadow: 0 4px 12px var(--glass-shadow); font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+          <span class="status-dot"></span>
+          <span id="orb-status-text">System Idle</span>
+        </div>
+      </div>
+      
+      <!-- RIGHT COLUMN: Chat Area -->
+      <div class="assistant-container" style="height: 550px;">
+        <div class="assistant-chat-header" style="background: transparent; border-bottom: 1px solid var(--border);">
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <h3 style="font-size:1.05rem; font-weight: 700; color: var(--text-main);">Case Transcription & Analysis</h3>
+          </div>
+        </div>
+        
+        <div class="assistant-messages" id="chat-messages" style="background: transparent;">
+          <!-- Populated dynamically by js/navigator.js -->
+        </div>
+        
+        <div class="assistant-input-area">
+          <input type="text" class="chat-input" id="chat-input-text" placeholder="Describe your legal issue (e.g. My landlord refuses to refund my flat deposit)...">
+          <button class="chat-send-btn" id="chat-send-btn" aria-label="Send Message">
+            <i data-lucide="send" style="width:1.2rem; height:1.2rem;"></i>
+          </button>
+        </div>
+        
+        <div class="assistant-disclaimer text-muted" style="border-top: 1px solid var(--border); background: transparent; padding: 1rem 2rem;">
+          Disclaimer: AajNyay provides educational legal guidance and does not replace professional legal advice.
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="text-center" style="margin-top: 1.5rem;">
+      <p style="margin-bottom:0.75rem;">Or select a common scenario to test the conversation flow:</p>
+      <div class="chip-container" style="justify-content:center;">
+        <button onclick="selectQuickChip('I scanned a QR code and money got debited from my account')" class="chat-chip">UPI QR Code Fraud</button>
+        <button onclick="selectQuickChip('My company laid me off without giving a notice or notice salary')" class="chat-chip">Wrongful Layoff</button>
+        <button onclick="selectQuickChip('My landlord refuses to return my security deposit and is ignoring calls')" class="chat-chip">Landlord Withholding Deposit</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved. Registered educational AI navigator.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navigator.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/voice.js"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

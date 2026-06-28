@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - AajNyay</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1"></div>
+    <div class="mesh-glow mesh-glow-2"></div>
+    <div class="mesh-glow mesh-glow-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gps.html" class="nav-link">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link">AI Navigator</a></li>
+        <li><a href="emergency.html" class="nav-link">Emergency Help</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login / Sign Up <i data-lucide="log-in"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Privacy Document -->
+  <main class="section-wrapper" style="padding-top: 8rem; min-height: 85vh; max-width: 800px;">
+    <div class="glass-panel reveal active">
+      <h1 style="font-size:2.2rem; margin-bottom:0.5rem; color:var(--accent);">Privacy Policy</h1>
+      <span class="text-muted" style="font-size:0.9rem; font-weight:600; display:block; margin-bottom:2rem;">Last Updated: June 24, 2026</span>
+      
+      <div style="display:flex; flex-direction:column; gap:1.5rem; line-height:1.7;">
+        <p>At AajNyay, we are committed to protecting the privacy of our users. This Privacy Policy details how we handle information in connection with your use of our platform.</p>
+        
+        <h3 style="color:var(--text-main); font-size:1.25rem;">1. Data Processing and Storage</h3>
+        <p>In our current deployment, all conversational logs in the AI Navigator and answers entered in the Legal GPS are processed locally in your browser session. We do not transmit, upload, or store your sensitive transaction figures, names, or dispute descriptions on our servers. Your data is stored in your temporary browser state and is destroyed when you refresh or close the page.</p>
+        
+        <h3 style="color:var(--text-main); font-size:1.25rem;">2. Cookies and Logs</h3>
+        <p>We use local storage (localStorage) solely to persist your UI preferences, such as your selected dark/light theme state. We do not use tracking pixels, analytics, or behavioral cookie scripts.</p>
+        
+        <h3 style="color:var(--text-main); font-size:1.25rem;">3. External Links</h3>
+        <p>Our platform references verified government portals, such as cybercrime.gov.in, consumerhelpline.gov.in, and the e-Daakhil filing board. Once you leave AajNyay, your actions are governed by the privacy statements of those respective official resources.</p>
+        
+        <h3 style="color:var(--text-main); font-size:1.25rem;">4. Compliance with DPDP Act, 2023</h3>
+        <p>AajNyay adheres to the standards of the Digital Personal Data Protection (DPDP) Act, 2023. Since we do not systematically collect or upload personal data, we do not perform profiling. If future updates incorporate LLM cloud loops or registry profiles, we will request your explicit, granular consent first.</p>
+        
+        <h3 style="color:var(--text-main); font-size:1.25rem;">5. Contact</h3>
+        <p>For privacy queries, contact support@aajnyay.org.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/voice.js"></script>
+  <script>
+    if (window.lucide) window.lucide.createIcons();
+  </script>
+</body>
+</html>

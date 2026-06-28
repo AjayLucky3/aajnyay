@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Legal Journey - AajNyay</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1" style="opacity: 0.1;"></div>
+    <div class="mesh-glow mesh-glow-2" style="opacity: 0.1;"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gps.html" class="nav-link">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link">AI Navigator</a></li>
+        <li><a href="emergency.html" class="nav-link">Emergency Help</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Workspace -->
+  <main class="section-wrapper" style="padding-top: 8rem; min-height: 85vh;">
+    
+    <div class="section-header reveal active" style="margin-bottom: 2rem; text-align: left; max-width: 100%;">
+      <span class="section-label">User Dashboard</span>
+      <h2 class="section-title">My Legal Journey</h2>
+      <p class="section-desc" id="dash-user-welcome">Loading your profile details...</p>
+    </div>
+    
+    <div class="events-dashboard reveal active">
+      <!-- Dashboard Menu Tabs -->
+      <div class="events-menu" id="dash-tabs-menu">
+        <button class="events-tab active" onclick="switchDashTab('journeys', this)"><i data-lucide="compass"></i> Saved Journeys</button>
+        <button class="events-tab" onclick="switchDashTab('bookmarks', this)"><i data-lucide="bookmark"></i> Bookmarks</button>
+        <button class="events-tab" onclick="switchDashTab('voice', this)"><i data-lucide="mic"></i> Voice Searches</button>
+        <button class="events-tab" onclick="switchDashTab('settings', this)"><i data-lucide="settings"></i> Profile Settings</button>
+        <!-- Appended by script if admin -->
+      </div>
+      
+      <!-- Dashboard Details Panes -->
+      <div id="dash-details-container" class="glass-panel" style="padding: 2rem; min-height: 400px; flex: 1;">
+        <!-- Filled dynamically by script -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    let activeTabId = 'journeys';
+    let journeysData = [];
+    let bookmarksData = [];
+    let voiceData = [];
+    let profileData = {};
+    let adminUsers = [];
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check auth before loading details
+      setTimeout(async () => {
+        if (window.AajNyayAuth.isAuthenticated) {
+          await loadProfile();
+          await switchDashTab('journeys', document.querySelector('.events-tab.active'));
+        }
+      }, 500);
+    });
+    
+    async function loadProfile() {
+      try {
+        const res = await fetch('/api/profile');
+        const data = await res.json();
+        if (data.success) {
+          profileData = data.user;
+          document.getElementById('dash-user-welcome').innerHTML = `Welcome back, <b>${profileData.name}</b>. Track your legal issues and review checklists. Member since: ${new Date(profileData.joined).toLocaleDateString()}`;
+          
+          // Verify if admin (User 1 is default first user / admin)
+          // We can check if email matches or simple query
+          if (profileData.email.includes('admin') || profileData.email === 'domaajay@gemini.com') { // simple override for admin
+             // Append Admin tab
+             const menu = document.getElementById('dash-tabs-menu');
+             if (menu && !document.getElementById('admin-tab-btn')) {
+               const adminBtn = document.createElement('button');
+               adminBtn.id = 'admin-tab-btn';
+               adminBtn.className = 'events-tab';
+               adminBtn.setAttribute('onclick', "switchDashTab('admin', this)");
+               adminBtn.innerHTML = `<i data-lucide="lock"></i> Platform Users (Admin)`;
+               menu.appendChild(adminBtn);
+             }
+          }
+        }
+      } catch(e) {
+        console.error('Failed to load profile:', e);
+      }
+    }
+    
+    async function switchDashTab(tabId, tabEl) {
+      activeTabId = tabId;
+      
+      // Update tab selection
+      const tabs = document.querySelectorAll('.events-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      if (tabEl) tabEl.classList.add('active');
+      
+      const container = document.getElementById('dash-details-container');
+      if (!container) return;
+      
+      container.innerHTML = `<div class="skeleton" style="height: 150px; width: 100%;"></div>`;
+      
+      try {
+        if (tabId === 'journeys') {
+          await fetchJourneys();
+          renderJourneys(container);
+        } else if (tabId === 'bookmarks') {
+          await fetchBookmarks();
+          renderBookmarks(container);
+        } else if (tabId === 'voice') {
+          await fetchVoiceHistory();
+          renderVoiceHistory(container);
+        } else if (tabId === 'settings') {
+          renderSettings(container);
+        } else if (tabId === 'admin') {
+          await fetchAdminUsers();
+          renderAdminUsers(container);
+        }
+      } catch (err) {
+        container.innerHTML = `<p style="color:#ef4444;">Error fetching data. Please try again.</p>`;
+      }
+      
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+    
+    // --- API FETCHERS ---
+    async function fetchJourneys() {
+      try {
+        const res = await fetch('/api/journeys');
+        const data = await res.json();
+        journeysData = data.success ? data.journeys : [];
+      } catch (e) {
+        console.warn('Backend fetchJourneys failed, loading local journeys:', e.message);
+        journeysData = JSON.parse(localStorage.getItem('aajnyay_journeys') || '[]');
+      }
+    }
+    
+    async function fetchBookmarks() {
+      try {
+        const res = await fetch('/api/bookmarks');
+        const data = await res.json();
+        bookmarksData = data.success ? data.bookmarks : [];
+      } catch (e) {
+        console.warn('Backend fetchBookmarks failed, loading local bookmarks:', e.message);
+        bookmarksData = JSON.parse(localStorage.getItem('aajnyay_bookmarks') || '[]');
+      }
+    }
+    
+    async function fetchVoiceHistory() {
+      try {
+        const res = await fetch('/api/voice');
+        const data = await res.json();
+        voiceData = data.success ? data.history : [];
+      } catch (e) {
+        console.warn('Backend fetchVoiceHistory failed, loading local voice logs:', e.message);
+        voiceData = JSON.parse(localStorage.getItem('aajnyay_voice_history') || '[]');
+      }
+    }
+    
+    async function fetchAdminUsers() {
+      try {
+        const res = await fetch('/api/admin/users');
+        const data = await res.json();
+        adminUsers = data.success ? data.users : [];
+      } catch (e) {
+        console.warn('Backend fetchAdminUsers failed, setting admin log as empty');
+        adminUsers = [];
+      }
+    }
+    
+    // --- RENDERING ROUTINES ---
+    function renderJourneys(container) {
+      if (journeysData.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:3rem 0;">
+            <i data-lucide="compass" style="width:3rem; height:3rem; color:var(--text-muted); margin-bottom:1rem;"></i>
+            <h3>No Saved Journeys</h3>
+            <p style="margin-bottom:1.5rem;">You haven't run any Legal GPS missions yet.</p>
+            <a href="gps.html" class="btn btn-primary">Start Legal GPS Mission</a>
+          </div>
+        `;
+        return;
+      }
+      
+      let html = '<h3 style="font-size:1.3rem; margin-bottom:1.5rem;">Your Saved Escalation Roadmaps</h3><div style="display:flex; flex-direction:column; gap:1.25rem;">';
+      
+      journeysData.forEach(j => {
+        html += `
+          <div class="glass-card tilt-card reveal-3d active" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; border-left:4px solid var(--accent);">
+            <div>
+              <h4 style="font-size:1.15rem; color:var(--text-main);">${j.title}</h4>
+              <p style="font-size:0.85rem; margin-top:0.25rem;">Case: ${j.case_id.replace('-', ' ').toUpperCase()} | Saved on ${new Date(j.created_at).toLocaleDateString()}</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <button onclick="downloadJourneyPlan(${j.id})" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;"><i data-lucide="download"></i> Download Action Plan</button>
+              <button onclick="deleteJourney(${j.id})" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem; border-color:#ef4444; color:#ef4444;"><i data-lucide="trash-2"></i> Delete</button>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    
+    function renderBookmarks(container) {
+      if (bookmarksData.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:3rem 0;">
+            <i data-lucide="bookmark" style="width:3rem; height:3rem; color:var(--text-muted); margin-bottom:1rem;"></i>
+            <h3>No Bookmarks Saved</h3>
+            <p style="margin-bottom:1.5rem;">Bookmark helpful statutory rights pages or checklists to view them here.</p>
+            <a href="library.html" class="btn btn-primary">Browse Rights Library</a>
+          </div>
+        `;
+        return;
+      }
+      
+      let html = '<h3 style="font-size:1.3rem; margin-bottom:1.5rem;">Bookmarked Pages & Articles</h3><div style="display:flex; flex-direction:column; gap:1rem;">';
+      bookmarksData.forEach(b => {
+        const link = b.item_type === 'library' ? `library.html?cat=${b.item_id}` : `gps.html?case=${b.item_id}`;
+        html += `
+          <div class="glass-card tilt-card reveal-3d active" style="display:flex; justify-content:space-between; align-items:center; border-left:4px solid var(--primary);">
+            <div>
+              <h4 style="font-size:1.1rem; color:var(--text-main);">${b.title}</h4>
+              <p style="font-size:0.8rem; margin-top:0.25rem;">Type: ${b.item_type.toUpperCase()} | Saved: ${new Date(b.created_at).toLocaleDateString()}</p>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <a href="${link}" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">Open</a>
+              <button onclick="deleteBookmark(${b.id})" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem; border-color:#ef4444; color:#ef4444;"><i data-lucide="trash-2"></i> Remove</button>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    
+    function renderVoiceHistory(container) {
+      if (voiceData.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:3rem 0;">
+            <i data-lucide="mic" style="width:3rem; height:3rem; color:var(--text-muted); margin-bottom:1rem;"></i>
+            <h3>No Voice History</h3>
+            <p>Your spoken transcripts and AI Navigator queries will show up here.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      let html = '<h3 style="font-size:1.3rem; margin-bottom:1.5rem;">Your Voice Assistant Transcripts</h3><div style="display:flex; flex-direction:column; gap:1.25rem;">';
+      voiceData.forEach(v => {
+        html += `
+          <div class="glass-card tilt-card reveal-3d active" style="text-align:left; border-left: 4px solid var(--accent);">
+            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted); margin-bottom:0.5rem;">
+              <span>Query Transcript</span>
+              <span>${new Date(v.created_at).toLocaleString()}</span>
+            </div>
+            <p style="font-weight:600; color:var(--text-main); margin-bottom:0.5rem;">"${v.transcript}"</p>
+            <p style="font-size:0.9rem; color:var(--text-muted);"><span style="color:var(--accent); font-weight:700;">AI Response:</span> ${v.response_text}</p>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+    
+    function renderSettings(container) {
+      container.innerHTML = `
+        <h3 style="font-size:1.3rem; margin-bottom:1.5rem;">Profile & Preferences</h3>
+        
+        <form onsubmit="handleSettingsUpdate(event)" style="max-width:450px; display:flex; flex-direction:column; gap:1.25rem;">
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-main); display:block; margin-bottom:0.4rem;">Full Name</label>
+            <input type="text" id="set-name" class="gps-text-input" value="${profileData.name}" required>
+          </div>
+          
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-main); display:block; margin-bottom:0.4rem;">Email Address (Cannot change)</label>
+            <input type="email" class="gps-text-input" value="${profileData.email}" disabled style="background:#f1f5f9; cursor:not-allowed;">
+          </div>
+          
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-main); display:block; margin-bottom:0.4rem;">Preferred Language</label>
+            <select id="set-lang" class="gps-text-input">
+              <option value="en" ${profileData.language === 'en' ? 'selected' : ''}>English</option>
+              <option value="hi" ${profileData.language === 'hi' ? 'selected' : ''}>हिंदी (Hindi)</option>
+              <option value="te" ${profileData.language === 'te' ? 'selected' : ''}>తెలుగు (Telugu)</option>
+              <option value="ta" ${profileData.language === 'ta' ? 'selected' : ''}>தமிழ் (Tamil)</option>
+              <option value="kn" ${profileData.language === 'kn' ? 'selected' : ''}>ಕನ್ನಡ (Kannada)</option>
+              <option value="mr" ${profileData.language === 'mr' ? 'selected' : ''}>मराठी (Marathi)</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width:fit-content; margin-top:0.5rem;">Save Changes <i data-lucide="check"></i></button>
+        </form>
+      `;
+    }
+    
+    function renderAdminUsers(container) {
+      let rowsHtml = '';
+      adminUsers.forEach(u => {
+        rowsHtml += `
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.75rem; text-align:left;">${u.id}</td>
+            <td style="padding:0.75rem; text-align:left; font-weight:600;">${u.name}</td>
+            <td style="padding:0.75rem; text-align:left;">${u.email}</td>
+            <td style="padding:0.75rem; text-align:center;">${u.language.toUpperCase()}</td>
+            <td style="padding:0.75rem; text-align:right;">${new Date(u.joined).toLocaleDateString()}</td>
+          </tr>
+        `;
+      });
+      
+      container.innerHTML = `
+        <h3 style="font-size:1.3rem; margin-bottom:0.5rem; color:#ef4444;">Platform Administration Directory</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.5rem;">This log presents registered user credentials. User password hashes remain completely hidden and secure on the SQLite database level.</p>
+        
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border); background:var(--bg-secondary);">
+                <th style="padding:0.75rem; text-align:left;">ID</th>
+                <th style="padding:0.75rem; text-align:left;">Name</th>
+                <th style="padding:0.75rem; text-align:left;">Email</th>
+                <th style="padding:0.75rem; text-align:center;">Lang</th>
+                <th style="padding:0.75rem; text-align:right;">Joined Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+    
+    // --- ACTIONS HANDLERS ---
+    async function handleSettingsUpdate(e) {
+      e.preventDefault();
+      const name = document.getElementById('set-name').value;
+      const language = document.getElementById('set-lang').value;
+      
+      try {
+        const res = await fetch('/api/profile/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, language })
+        });
+        if (res.ok) {
+          window.showToast('Profile preferences updated successfully', 'success');
+          // Reload settings
+          await loadProfile();
+          switchDashTab('settings', null);
+        }
+      } catch (err) {
+        window.showToast('Failed to save settings', 'error');
+      }
+    }
+    
+    async function deleteJourney(id) {
+      if (!confirm('Are you sure you want to delete this saved legal roadmap?')) return;
+      try {
+        const res = await fetch(`/api/journeys?id=${id}`, { method: 'DELETE' });
+        if (res.ok) {
+          window.showToast('Legal journey deleted', 'success');
+          await switchDashTab('journeys', null);
+          return;
+        }
+        throw new Error('API delete failed');
+      } catch (e) {
+        console.warn('API deleteJourney failed, performing local delete:', e.message);
+        let localJourneys = JSON.parse(localStorage.getItem('aajnyay_journeys') || '[]');
+        localJourneys = localJourneys.filter(j => j.id !== id);
+        localStorage.setItem('aajnyay_journeys', JSON.stringify(localJourneys));
+        window.showToast('Legal journey deleted locally', 'success');
+        await switchDashTab('journeys', null);
+      }
+    }
+    
+    async function deleteBookmark(id) {
+      try {
+        const res = await fetch(`/api/bookmarks?id=${id}`, { method: 'DELETE' });
+        if (res.ok) {
+          window.showToast('Bookmark removed', 'success');
+          await switchDashTab('bookmarks', null);
+          return;
+        }
+        throw new Error('API delete failed');
+      } catch (e) {
+        console.warn('API deleteBookmark failed, performing local remove:', e.message);
+        let localBookmarks = JSON.parse(localStorage.getItem('aajnyay_bookmarks') || '[]');
+        localBookmarks = localBookmarks.filter(b => b.id !== id);
+        localStorage.setItem('aajnyay_bookmarks', JSON.stringify(localBookmarks));
+        window.showToast('Bookmark removed locally', 'success');
+        await switchDashTab('bookmarks', null);
+      }
+    }
+    
+    function downloadJourneyPlan(journeyId) {
+      const journey = journeysData.find(j => j.id === journeyId);
+      if (!journey) return;
+      
+      const plan = journey.plan;
+      
+      // Mimic print generation
+      const printWindow = window.open('', '_blank');
+      
+      let docsHtml = '';
+      plan.documents.forEach(doc => {
+        docsHtml += `<li>[ ] ${doc}</li>`;
+      });
+      
+      let timelineHtml = '';
+      plan.escalations.forEach(esc => {
+        timelineHtml += `<li><strong>${esc.time}:</strong> ${esc.task}</li>`;
+      });
+      
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>AajNyay Saved Action Plan</title>
+            <style>
+              body { font-family: sans-serif; padding: 40px; color: #333; line-height: 1.6; }
+              .section { border: 1px solid #ccc; padding: 20px; border-radius: 6px; margin-bottom: 20px; background: #fafafa; }
+              h2, h3 { color: #0b2545; }
+            </style>
+          </head>
+          <body>
+            <div style="text-align: center; margin-bottom: 40px;">
+              <h1>AAJNYAY LEGAL ACTION PLAN</h1>
+              <p>Case Roadmap: ${journey.title}</p>
+            </div>
+            
+            <div class="section">
+              <h3>Immediate Next Action</h3>
+              <p><strong>${plan.nextAction}</strong></p>
+            </div>
+            
+            <div class="section">
+              <h3>Required Documents Checklist</h3>
+              <ul>${docsHtml}</ul>
+            </div>
+            
+            <div class="section">
+              <h3>Statutes & Laws</h3>
+              <p>${plan.laws.map(l => `<strong>${l.name}</strong>: ${l.desc}`).join('<br>')}</p>
+            </div>
+            
+            <div class="section">
+              <h3>Escalation Path</h3>
+              <ul>${timelineHtml}</ul>
+            </div>
+            
+            <div style="text-align:center; font-size:11px; margin-top:50px; color:#666;">
+              Disclaimer: AajNyay provides educational legal guidance and does not replace professional legal advice.
+            </div>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.print();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal GPS - AajNyay | Step-by-Step Legal Guidance</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1"></div>
+    <div class="mesh-glow mesh-glow-2"></div>
+    <div class="mesh-glow mesh-glow-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gps.html" class="nav-link active">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link">AI Navigator</a></li>
+        <li><a href="emergency.html" class="nav-link">Emergency Help</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login / Sign Up <i data-lucide="log-in"></i></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Legal GPS Workspace -->
+  <main class="gps-flow-page">
+    
+    <!-- PANE 1: INTRO & DASHBOARD -->
+    <div id="gps-intro-pane" style="display: block;">
+      <div class="section-header reveal active" style="margin-bottom: 2rem; text-align: left; max-width: 100%;">
+        <span class="section-label">Interactive Guidance</span>
+        <h2 class="section-title">AajNyay Legal GPS</h2>
+        <p class="section-desc">Select your issue below. The GPS will analyze dates, amounts, and contracts, then generate a personalized PDF-ready legal roadmap outlining rights, checklists, and authorities.</p>
+      </div>
+      
+      <div class="gps-grid">
+        <button onclick="startGPSFlow('upi-fraud')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Financial Crime</span>
+            <div class="gps-icon-wrapper"><i data-lucide="smartphone"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>UPI Fraud</h3>
+            <p>Phishing links, SIM swap, OTP sharing, and transaction recovery routes.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('salary-unpaid')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Labour Law</span>
+            <div class="gps-icon-wrapper"><i data-lucide="briefcase"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Salary Not Paid</h3>
+            <p>Delayed payments, corporate insolvency, and labor court petitions.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('consumer-complaint')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Consumer Rights</span>
+            <div class="gps-icon-wrapper"><i data-lucide="shopping-bag"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Consumer Complaint</h3>
+            <p>Defective goods, service deficiency, overcharging, and refunds.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('rental-deposit')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Tenancy Law</span>
+            <div class="gps-icon-wrapper"><i data-lucide="home"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Rental Deposit Issue</h3>
+            <p>Unreasonable painting deductions and landlords withholding deposit funds.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('workplace-harassment')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Corporate Law</span>
+            <div class="gps-icon-wrapper"><i data-lucide="shield-alert"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Workplace Harassment</h3>
+            <p>POSH compliance, bullying, and discriminatory corporate actions.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('property-dispute')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Property Law</span>
+            <div class="gps-icon-wrapper"><i data-lucide="map"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Property Dispute</h3>
+            <p>Illegal trespass, ancestral partition, and builder delays.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('cyberbullying')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Cyber Law</span>
+            <div class="gps-icon-wrapper"><i data-lucide="globe"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Cyberbullying</h3>
+            <p>Abusive social profiles, online stalking, and privacy breaches.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('domestic-violence')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Family Law</span>
+            <div class="gps-icon-wrapper"><i data-lucide="user-minus"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Domestic Violence</h3>
+            <p>Physical abuse rescue, shelter homes, and court protection orders.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('lost-documents')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Civil Registry</span>
+            <div class="gps-icon-wrapper"><i data-lucide="file-warning"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Lost Documents</h3>
+            <p>Replacing lost passports, Aadhaar cards, and land registry deeds.</p>
+          </div>
+        </button>
+        
+        <button onclick="startGPSFlow('fake-loan-apps')" class="glass-card gps-card tilt-card reveal active">
+          <div class="gps-card-top">
+            <span class="gps-badge">Cyber Extortion</span>
+            <div class="gps-icon-wrapper"><i data-lucide="lock"></i></div>
+          </div>
+          <div class="gps-card-body">
+            <h3>Fake Loan Apps</h3>
+            <p>Handling extortion and threats from illegal mobile lending apps.</p>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- PANE 2: INTERACTIVE QUESTIONS ENGINE -->
+    <div id="gps-flow-pane" style="display: none; max-width: 800px; margin: 0 auto;">
+      
+      <!-- Glowing Visual GPS Pathway -->
+      <div class="legal-gps-pathway">
+        <div class="pathway-step active" id="path-step-1">
+          <div class="step-dot"><i data-lucide="compass"></i></div>
+          <span>Case Selection</span>
+        </div>
+        <div class="pathway-line line-1 active" id="path-line-1"></div>
+        <div class="pathway-step" id="path-step-2">
+          <div class="step-dot"><i data-lucide="help-circle"></i></div>
+          <span>Analysis</span>
+        </div>
+        <div class="pathway-line line-2" id="path-line-2"></div>
+        <div class="pathway-step" id="path-step-3">
+          <div class="step-dot"><i data-lucide="shield"></i></div>
+          <span>Rights Identified</span>
+        </div>
+        <div class="pathway-line line-3" id="path-line-3"></div>
+        <div class="pathway-step" id="path-step-4">
+          <div class="step-dot"><i data-lucide="file-check"></i></div>
+          <span>Documents Required</span>
+        </div>
+        <div class="pathway-line line-4" id="path-line-4"></div>
+        <div class="pathway-step" id="path-step-5">
+          <div class="step-dot"><i data-lucide="flag"></i></div>
+          <span>Resolution Path</span>
+        </div>
+      </div>
+
+      <div class="glass-panel gps-flow-card reveal-3d active">
+        <div class="gps-flow-header">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 id="gps-flow-title" style="font-size: 1.4rem;">Legal Situation</h2>
+            <span class="gps-step-indicator" id="gps-step-indicator">Step 1 of 4</span>
+          </div>
+          <div class="gps-progress-bar-bg">
+            <div class="gps-progress-bar-fill" id="gps-progress-fill" style="width: 25%;"></div>
+          </div>
+        </div>
+        
+        <div class="gps-flow-body" id="gps-step-body">
+          <!-- Populated dynamically by js/gps.js -->
+        </div>
+        
+        <div class="gps-flow-footer">
+          <button id="gps-back-btn" class="btn btn-secondary" onclick="prevStep()"><i data-lucide="arrow-left"></i> Back</button>
+          <button id="gps-next-btn" class="btn btn-primary" onclick="nextStep()">Next Step <i data-lucide="arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 3: PERSONALIZED ACTION PLAN SUMMARY -->
+    <div id="gps-summary-pane" style="display: none; max-width: 1000px; margin: 0 auto;">
+      <!-- Glowing Visual GPS Pathway - Completed -->
+      <div class="legal-gps-pathway">
+        <div class="pathway-step completed">
+          <div class="step-dot"><i data-lucide="compass"></i></div>
+          <span>Case Selection</span>
+        </div>
+        <div class="pathway-line completed"></div>
+        <div class="pathway-step completed">
+          <div class="step-dot"><i data-lucide="help-circle"></i></div>
+          <span>Analysis</span>
+        </div>
+        <div class="pathway-line completed"></div>
+        <div class="pathway-step completed">
+          <div class="step-dot"><i data-lucide="shield"></i></div>
+          <span>Rights Identified</span>
+        </div>
+        <div class="pathway-line completed"></div>
+        <div class="pathway-step completed">
+          <div class="step-dot"><i data-lucide="file-check"></i></div>
+          <span>Documents Required</span>
+        </div>
+        <div class="pathway-line completed"></div>
+        <div class="pathway-step completed">
+          <div class="step-dot"><i data-lucide="flag"></i></div>
+          <span>Resolution Path</span>
+        </div>
+      </div>
+
+      <div id="gps-roadmap-container">
+        <!-- Rendered dynamically by js/gps.js -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved. Educational LegalTech platform.</p>
+      <p class="text-muted" style="font-size:0.75rem;">Disclaimer: AajNyay provides educational legal guidance and does not replace professional legal advice.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/gps.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/voice.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+    
+    // Automatically trigger GPS flow if query param is set
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const caseId = urlParams.get('case');
+      if (caseId) {
+        setTimeout(() => {
+          startGPSFlow(caseId);
+        }, 300);
+      }
+    });
+  </script>
+</body>
+</html>

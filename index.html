@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AajNyay - India's Legal GPS | Justice Made Understandable</title>
+  <meta name="description" content="AajNyay helps Indian citizens understand their rights and navigate legal challenges through step-by-step guidance.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1"></div>
+    <div class="mesh-glow mesh-glow-2"></div>
+    <div class="mesh-glow mesh-glow-3"></div>
+  </div>
+
+  <!-- Sticky Glass Navigation -->
+  <nav class="navbar" id="app-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="gps.html" class="nav-link">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link">AI Navigator</a></li>
+        <li><a href="emergency.html" class="nav-link">Emergency Help</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login / Sign Up <i data-lucide="log-in"></i></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: HERO -->
+  <header class="hero-section">
+    <div class="hero-content reveal">
+      <div class="tagline-badge">
+        <i data-lucide="compass" style="width: 1rem; height: 1rem;"></i> “Justice Made Understandable”
+      </div>
+      <h1 class="hero-title">Know Your Rights.<br><span>Take The Right Action.</span></h1>
+      <p class="hero-subtitle">AajNyay helps Indian citizens understand their rights and navigate legal situations through AI-powered step-by-step guidance. Get simple action roadmaps for real-life situations.</p>
+      <div class="hero-actions">
+        <a href="gps.html" class="btn btn-primary">Start Legal GPS <i data-lucide="navigation"></i></a>
+        <a href="javascript:void(0)" onclick="openVoiceOverlay()" class="btn btn-secondary">Talk to AajNyay <i data-lucide="mic"></i></a>
+      </div>
+    </div>
+    
+    <div class="hero-visualizer reveal">
+      <div class="particle-container"></div>
+      <div class="scene-3d">
+        <!-- SVG Connecting Network Lines -->
+        <svg class="network-svg" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 1;">
+          <line id="line-node-1" x1="50%" y1="50%" x2="12%" y2="12%" stroke="url(#line-grad-saffron)" stroke-width="1.5" stroke-dasharray="3, 3" opacity="0.45" />
+          <line id="line-node-2" x1="50%" y1="50%" x2="88%" y2="15%" stroke="url(#line-grad-blue)" stroke-width="1.5" stroke-dasharray="3, 3" opacity="0.45" />
+          <line id="line-node-3" x1="50%" y1="50%" x2="8%" y2="82%" stroke="url(#line-grad-blue)" stroke-width="1.5" stroke-dasharray="3, 3" opacity="0.45" />
+          <line id="line-node-4" x1="50%" y1="50%" x2="85%" y2="85%" stroke="url(#line-grad-saffron)" stroke-width="1.5" stroke-dasharray="3, 3" opacity="0.45" />
+          <line id="line-node-5" x1="50%" y1="50%" x2="48%" y2="5%" stroke="url(#line-grad-blue)" stroke-width="1.5" stroke-dasharray="3, 3" opacity="0.45" />
+          <line id="line-node-6" x1="50%" y1="50%" x2="52%" y2="95%" stroke="url(#line-grad-saffron)" stroke-width="1.5" stroke-dasharray="3, 3" opacity="0.45" />
+          <defs>
+            <linearGradient id="line-grad-saffron" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--accent)" />
+              <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.1" />
+            </linearGradient>
+            <linearGradient id="line-grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--primary)" />
+              <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.1" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Dynamic Ambient Light Trails (Emitted Glows) -->
+        <div class="ambient-glow-circle" style="position: absolute; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(var(--primary-rgb), 0.08) 0%, transparent 70%); filter: blur(10px); pointer-events: none; z-index: 0;"></div>
+
+        <!-- Backdrop Character Illustration (Layered Depth) -->
+        <img src="assets/hero_citizens_justice.png" alt="Diverse Indian Citizens Connected to Legal Support" class="parallax-depth" data-speed="0.2" style="width: 100%; max-width: 340px; position: absolute; z-index: 1; opacity: 0.35; pointer-events: none; filter: grayscale(30%) blur(1px); border-radius: var(--radius-lg);">
+
+        <!-- Futuristic 3D Justice Core -->
+        <div class="justice-core-sphere parallax-depth" data-speed="0.6" style="position: absolute; z-index: 3; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, rgba(var(--primary-rgb), 0.75) 45%, rgba(var(--accent-rgb), 0.2) 100%); box-shadow: 0 0 45px rgba(var(--primary-rgb), 0.35), 0 0 80px rgba(var(--accent-rgb), 0.25), inset 0 0 15px rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; transition: all 0.5s ease;">
+          <div class="core-icon-glow" style="color: var(--primary); filter: drop-shadow(0 0 15px rgba(var(--primary-rgb), 0.8)); animation: pulse-slow 3s infinite ease-in-out; display: flex; align-items: center; justify-content: center;">
+            <i data-lucide="scale" style="width: 3.2rem; height: 3.2rem; stroke-width: 1.5;"></i>
+          </div>
+        </div>
+        
+        <div class="orbit-ring orbit-1"></div>
+        <div class="orbit-ring orbit-2"></div>
+        
+        <!-- Floating 3D justice nodes (Suspended in zero gravity) -->
+        <div class="floating-3d-node node-1 parallax-depth" data-speed="2.3" title="Legal Document"><i data-lucide="file-text"></i></div>
+        <div class="floating-3d-node node-2 parallax-depth" data-speed="1.4" title="Court Gavel"><i data-lucide="gavel"></i></div>
+        <div class="floating-3d-node node-3 parallax-depth" data-speed="3.0" title="Protection Shield"><i data-lucide="shield"></i></div>
+        <div class="floating-3d-node node-4 parallax-depth" data-speed="1.8" title="Law Book"><i data-lucide="book-open"></i></div>
+        <div class="floating-3d-node node-5 parallax-depth" data-speed="2.7" title="Courthouse Pillar"><i data-lucide="landmark"></i></div>
+        <div class="floating-3d-node node-6 parallax-depth" data-speed="2.0" title="Legal Scroll"><i data-lucide="scroll"></i></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 2: TRUST INDICATORS -->
+  <section class="section-wrapper">
+    <div class="trust-grid">
+      <div class="glass-card trust-card reveal">
+        <div class="trust-icon-box"><i data-lucide="book-open"></i></div>
+        <h3>Rights Awareness</h3>
+        <p>Decipher complex statutory acts into simple, clear explanations in local languages.</p>
+      </div>
+      <div class="glass-card trust-card reveal">
+        <div class="trust-icon-box"><i data-lucide="compass"></i></div>
+        <h3>Legal Guidance</h3>
+        <p>Step-by-step escalation routes mapped out for complaints, notices, and court petitions.</p>
+      </div>
+      <div class="glass-card trust-card reveal">
+        <div class="trust-icon-box"><i data-lucide="user-check"></i></div>
+        <h3>Citizen Empowerment</h3>
+        <p>Tools designed to help you act independently and confidently engage authorities.</p>
+      </div>
+      <div class="glass-card trust-card reveal">
+        <div class="trust-icon-box"><i data-lucide="globe"></i></div>
+        <h3>Multilingual Support</h3>
+        <p>Designed for easy localization to support major Indian regional languages.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: LEGAL GPS (FLAGSHIP) -->
+  <section class="section-wrapper">
+    <div class="section-header reveal">
+      <span class="section-label">Interactive Platform</span>
+      <h2 class="section-title">India's Legal GPS</h2>
+      <p class="section-desc text-muted">Tell us your problem and we'll guide you through the next steps. Select a legal issue below to launch a guided, step-by-step mission.</p>
+    </div>
+    
+    <div class="gps-grid">
+      <a href="gps.html?case=upi-fraud" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Financial Crime</span>
+          <div class="gps-icon-wrapper"><i data-lucide="smartphone"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>UPI Fraud</h3>
+          <p>Locked transactions, phishing scams, and fake banking reps.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=salary-unpaid" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Labour Law</span>
+          <div class="gps-icon-wrapper"><i data-lucide="briefcase"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Salary Not Paid</h3>
+          <p>Delay in corporate payouts, contract dues, and wage disputes.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=consumer-complaint" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Consumer Rights</span>
+          <div class="gps-icon-wrapper"><i data-lucide="shopping-bag"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Consumer Complaint</h3>
+          <p>Defective goods, refund denials, and poor service delivery.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=rental-deposit" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Tenancy Law</span>
+          <div class="gps-icon-wrapper"><i data-lucide="home"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Rental Deposit Issue</h3>
+          <p>Landlords withholding deposit amounts or unfair painting cuts.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=workplace-harassment" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Corporate Law</span>
+          <div class="gps-icon-wrapper"><i data-lucide="shield-alert"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Workplace Harassment</h3>
+          <p>POSH compliance, corporate bullying, and discrimination issues.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=property-dispute" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Property Law</span>
+          <div class="gps-icon-wrapper"><i data-lucide="map"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Property Dispute</h3>
+          <p>Illegal possession, ancestral division, and builder delays.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=cyberbullying" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Cyber Law</span>
+          <div class="gps-icon-wrapper"><i data-lucide="globe"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Cyberbullying</h3>
+          <p>Social media harassment, online stalking, and privacy breaches.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=domestic-violence" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Family Law</span>
+          <div class="gps-icon-wrapper"><i data-lucide="user-minus"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Domestic Violence</h3>
+          <p>Physical abuse protection, shelter assistance, and child protection.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=lost-documents" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Civil Registry</span>
+          <div class="gps-icon-wrapper"><i data-lucide="file-warning"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Lost Documents</h3>
+          <p>Replacing lost passports, Aadhaar cards, and registry deeds.</p>
+        </div>
+      </a>
+      
+      <a href="gps.html?case=fake-loan-apps" class="glass-card gps-card tilt-card reveal">
+        <div class="gps-card-top">
+          <span class="gps-badge">Cyber Extortion</span>
+          <div class="gps-icon-wrapper"><i data-lucide="lock"></i></div>
+        </div>
+        <div class="gps-card-body">
+          <h3>Fake Loan Apps</h3>
+          <p>Extortion from unregulated mobile lending applications.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 4: HOW AAJNYAY WORKS -->
+  <section class="section-wrapper reveal">
+    <div class="section-header">
+      <span class="section-label">Methodology</span>
+      <h2 class="section-title">How AajNyay Works</h2>
+      <p class="section-desc">Our platform utilizes a structured 4-step framework to guide you from confusion to legal resolution.</p>
+    </div>
+    
+    <div class="works-grid">
+      <div class="works-card">
+        <div class="works-num">1</div>
+        <h4>Input Assessment</h4>
+        <p>Answer clarifying questions regarding dates, transaction loops, or agreements.</p>
+      </div>
+      <div class="works-card">
+        <div class="works-num">2</div>
+        <h4>Rights Identification</h4>
+        <p>Our system identifies the governing sections of IPC, BNS, or IT Acts.</p>
+      </div>
+      <div class="works-card">
+        <div class="works-num">3</div>
+        <h4>Document Audit</h4>
+        <p>Obtain an exact checklist of slips, invoices, deeds, and letters required to file complaints.</p>
+      </div>
+      <div class="works-card">
+        <div class="works-num">4</div>
+        <h4>Escalation Routing</h4>
+        <p>Receive a downloadable step-by-step roadmap indicating which authority to contact when.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: RIGHTS LIBRARY (PREVIEW) -->
+  <section class="section-wrapper">
+    <div class="section-header reveal">
+      <span class="section-label">Knowledge Base</span>
+      <h2 class="section-title">Explore Rights Library</h2>
+      <p class="section-desc text-muted">A comprehensive, verified legal encyclopedia for Indian citizens. Select a card to access statutory articles, laws, and official forms.</p>
+    </div>
+    
+    <div class="library-grid">
+      <a href="library.html?cat=consumer" class="glass-card library-card tilt-card reveal">
+        <div class="library-header">
+          <div class="library-icon"><i data-lucide="shopping-bag"></i></div>
+          <h3>Consumer Rights</h3>
+        </div>
+        <p>Right to safety, replacement, refund, and fair advertising representation.</p>
+        <span class="library-footer-link">Details <i data-lucide="arrow-right"></i></span>
+      </a>
+      
+      <a href="library.html?cat=labour" class="glass-card library-card tilt-card reveal">
+        <div class="library-header">
+          <div class="library-icon"><i data-lucide="briefcase"></i></div>
+          <h3>Labour Rights</h3>
+        </div>
+        <p>Minimum wages, notice period parameters, and maternity protections.</p>
+        <span class="library-footer-link">Details <i data-lucide="arrow-right"></i></span>
+      </a>
+      
+      <a href="library.html?cat=womens" class="glass-card library-card tilt-card reveal">
+        <div class="library-header">
+          <div class="library-icon"><i data-lucide="user"></i></div>
+          <h3>Women's Rights</h3>
+        </div>
+        <p>POSH workplace guidelines, Domestic Incident reports, and property shares.</p>
+        <span class="library-footer-link">Details <i data-lucide="arrow-right"></i></span>
+      </a>
+      
+      <a href="library.html?cat=property" class="glass-card library-card tilt-card reveal">
+        <div class="library-header">
+          <div class="library-icon"><i data-lucide="home"></i></div>
+          <h3>Property Rights</h3>
+        </div>
+        <p>Sale deeds, land mutation procedures, and RERA delay compensation claims.</p>
+        <span class="library-footer-link">Details <i data-lucide="arrow-right"></i></span>
+      </a>
+    </div>
+    
+    <div class="text-center" style="margin-top: 3rem;">
+      <a href="library.html" class="btn btn-secondary">View All 8 Categories <i data-lucide="arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- SECTION 6: AI LEGAL ASSISTANT (CHAT PORTAL) -->
+  <section class="section-wrapper">
+    <div class="section-header reveal">
+      <span class="section-label">AI Legal Guide</span>
+      <h2 class="section-title">Talk to our Legal Navigator</h2>
+      <p class="section-desc">Our intelligent navigator will ask clarifying questions about your legal situation and build a customized action plan.</p>
+    </div>
+    
+    <div class="glass-panel assistant-panel reveal">
+      <div class="assistant-container">
+        <div class="assistant-chat-header">
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <i data-lucide="bot" style="color:var(--accent);"></i>
+            <h3 style="font-size:1.1rem;">AajNyay Legal Navigator</h3>
+          </div>
+          <div class="assistant-status">
+            <span class="status-dot"></span>
+            Online & Ready
+          </div>
+        </div>
+        
+        <div class="assistant-messages" id="chat-messages">
+          <!-- Chat messages are appended here by js/navigator.js -->
+        </div>
+        
+        <div class="assistant-input-area">
+          <input type="text" class="chat-input" id="chat-input-text" placeholder="Describe your legal problem in simple language (e.g. My landlord refuses to refund deposit)...">
+          <button class="chat-send-btn" id="chat-send-btn" aria-label="Send Message">
+            <i data-lucide="send" style="width:1.2rem; height:1.2rem;"></i>
+          </button>
+        </div>
+        
+        <div class="assistant-disclaimer text-muted">
+          Disclaimer: AajNyay provides educational legal guidance and does not replace professional legal advice.
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center" style="margin-top: 2rem;">
+      <p style="margin-bottom:0.75rem;">Or try a quick sample situation:</p>
+      <div class="chip-container" style="justify-content:center;">
+        <button onclick="selectQuickChip('I lost my money in a phone fraud transaction')" class="chat-chip">UPI Scam</button>
+        <button onclick="selectQuickChip('My company is refusing to pay my salary for two months')" class="chat-chip">Unpaid Salary</button>
+        <button onclick="selectQuickChip('My landlord refuses to return my security deposit')" class="chat-chip">Deposit Dispute</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: LIFE EVENTS DASHBOARD -->
+  <section class="section-wrapper">
+    <div class="section-header reveal">
+      <span class="section-label">Life Planning</span>
+      <h2 class="section-title">Life Events Legal Dashboard</h2>
+      <p class="section-desc text-muted">Navigating major life changes safely. Select an event to check checklists, required documents, obligations, and risks.</p>
+    </div>
+    
+    <div class="events-dashboard reveal-3d active" style="display:flex; flex-direction:column; gap:2.5rem; border:none; background:none; box-shadow:none;">
+      
+      <!-- 3D Portal Grid -->
+      <div class="portal-grid">
+        <div class="portal-card reveal-3d active" style="--portal-color: 37, 99, 235;" onclick="selectEventPortal('renting-house', this)">
+          <div class="portal-icon"><i data-lucide="home"></i></div>
+          <h3 style="font-size:1.15rem; font-family:var(--font-display); font-weight:700;">Renting a House</h3>
+          <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">Deposits, tenant rights, agreements.</p>
+        </div>
+        
+        <div class="portal-card reveal-3d active" style="--portal-color: 255, 153, 51;" onclick="selectEventPortal('buying-property', this)">
+          <div class="portal-icon"><i data-lucide="map"></i></div>
+          <h3 style="font-size:1.15rem; font-family:var(--font-display); font-weight:700;">Buying Property</h3>
+          <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">Land mutation, deeds, builder delays.</p>
+        </div>
+        
+        <div class="portal-card reveal-3d active" style="--portal-color: 16, 185, 129;" onclick="selectEventPortal('starting-business', this)">
+          <div class="portal-icon"><i data-lucide="briefcase"></i></div>
+          <h3 style="font-size:1.15rem; font-family:var(--font-display); font-weight:700;">Starting Business</h3>
+          <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">Contracts, partnerships, RERA rules.</p>
+        </div>
+        
+        <div class="portal-card reveal-3d active" style="--portal-color: 236, 72, 153;" onclick="selectEventPortal('marriage', this)">
+          <div class="portal-icon"><i data-lucide="heart"></i></div>
+          <h3 style="font-size:1.15rem; font-family:var(--font-display); font-weight:700;">Marriage</h3>
+          <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">Registration, asset divisions.</p>
+        </div>
+        
+        <div class="portal-card reveal-3d active" style="--portal-color: 100, 116, 139;" onclick="selectEventPortal('divorce', this)">
+          <div class="portal-icon"><i data-lucide="user-minus"></i></div>
+          <h3 style="font-size:1.15rem; font-family:var(--font-display); font-weight:700;">Divorce</h3>
+          <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">Alimony, child custody paths.</p>
+        </div>
+        
+        <div class="portal-card reveal-3d active" style="--portal-color: 59, 130, 246;" onclick="selectEventPortal('employment', this)">
+          <div class="portal-icon"><i data-lucide="award"></i></div>
+          <h3 style="font-size:1.15rem; font-family:var(--font-display); font-weight:700;">Employment</h3>
+          <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">Layoffs, POSH compliance, wages.</p>
+        </div>
+        
+        <div class="portal-card reveal-3d active" style="--portal-color: 239, 68, 68;" onclick="selectEventPortal('cyber-fraud', this)">
+          <div class="portal-icon"><i data-lucide="shield"></i></div>
+          <h3 style="font-size:1.15rem; font-family:var(--font-display); font-weight:700;">Cyber Fraud</h3>
+          <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">Extortion apps, QR phishing recovery.</p>
+        </div>
+        
+        <div class="portal-card reveal-3d active" style="--portal-color: 245, 158, 11;" onclick="selectEventPortal('consumer-purchases', this)">
+          <div class="portal-icon"><i data-lucide="shopping-bag"></i></div>
+          <h3 style="font-size:1.15rem; font-family:var(--font-display); font-weight:700;">Consumer Purchases</h3>
+          <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">Refunds, warranty claims, defective products.</p>
+        </div>
+      </div>
+      
+      <!-- Expanded immersive detail card -->
+      <div id="events-details-panel" class="glass-panel reveal-3d active" style="padding:2.2rem 2rem; border-radius: var(--radius-lg); border-top: 4px solid var(--primary); display: none;">
+        <!-- Rendered by js/events.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: EMERGENCY HELP -->
+  <section class="section-wrapper">
+    <div class="section-header reveal">
+      <span class="section-label">Emergency Actions</span>
+      <h2 class="section-title" style="color: #ef4444;">Helplines & Emergency Help</h2>
+      <p class="section-desc">Quickly copy contact details or dial emergency support phone loops immediately on mobile devices.</p>
+    </div>
+    
+    <div class="emergency-grid">
+      <div class="glass-card emergency-card reveal">
+        <div class="emergency-tag">
+          <span class="pulse-badge"></span> Cyber Crime
+        </div>
+        <div class="emergency-num">1930</div>
+        <p>Report online cyber banking fraud or extortion loops within 2 hours to freeze funds.</p>
+        <div class="emergency-actions">
+          <a href="tel:1930" class="btn btn-primary" style="background:#ef4444; box-shadow:none;"><i data-lucide="phone"></i> Call</a>
+          <button onclick="navigator.clipboard.writeText('1930'); window.showToast('Copied to clipboard', 'success');" class="btn btn-secondary"><i data-lucide="copy"></i> Copy</button>
+        </div>
+      </div>
+      
+      <div class="glass-card emergency-card reveal">
+        <div class="emergency-tag">
+          <span class="pulse-badge"></span> Women Helpline
+        </div>
+        <div class="emergency-num">1091</div>
+        <p>Emergency assistance, protection, and rescue helpline for women facing abuse.</p>
+        <div class="emergency-actions">
+          <a href="tel:1091" class="btn btn-primary" style="background:#ef4444; box-shadow:none;"><i data-lucide="phone"></i> Call</a>
+          <button onclick="navigator.clipboard.writeText('1091'); window.showToast('Copied to clipboard', 'success');" class="btn btn-secondary"><i data-lucide="copy"></i> Copy</button>
+        </div>
+      </div>
+      
+      <div class="glass-card emergency-card reveal">
+        <div class="emergency-tag">
+          <span class="pulse-badge"></span> Child Helpline
+        </div>
+        <div class="emergency-num">1098</div>
+        <p>24x7 emergency phone outreach service for children in distress and care.</p>
+        <div class="emergency-actions">
+          <a href="tel:1098" class="btn btn-primary" style="background:#ef4444; box-shadow:none;"><i data-lucide="phone"></i> Call</a>
+          <button onclick="navigator.clipboard.writeText('1098'); window.showToast('Copied to clipboard', 'success');" class="btn btn-secondary"><i data-lucide="copy"></i> Copy</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center" style="margin-top: 3rem;">
+      <a href="emergency.html" class="btn btn-secondary">View Legal Aid Services & Locator <i data-lucide="map-pin"></i></a>
+    </div>
+  </section>
+
+  <!-- SECTION 9: IMPACT STATISTICS -->
+  <section class="section-wrapper stats-banner reveal">
+    <h2 class="section-title">Bridging the Legal Awareness Gap</h2>
+    <p class="section-desc" style="max-width: 600px; margin: 0 auto 2rem auto;">Millions of Indian citizens struggle to find accurate, simple, and timely legal information. AajNyay is here to resolve this gap.</p>
+    
+    <div class="stats-grid">
+      <div class="glass-card">
+        <div class="stats-num">70%+</div>
+        <h4>Of disputes are civil and avoidable</h4>
+        <p>If citizens had clear information before entering contracts.</p>
+      </div>
+      <div class="glass-card">
+        <div class="stats-num">1930</div>
+        <h4>National Cyber Helpline calls daily</h4>
+        <p>Protecting bank accounts against fraudulent transactions.</p>
+      </div>
+      <div class="glass-card">
+        <div class="stats-num">24/7</div>
+        <h4>Instant Educational Guidance</h4>
+        <p>Available on both web and mobile-first layouts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: ABOUT AAJNYAY -->
+  <section class="section-wrapper reveal" style="text-align: center; max-width: 800px;">
+    <span class="section-label">Our Mission</span>
+    <h2 class="section-title" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">To make legal awareness accessible to every citizen regardless of language, education, or background.</h2>
+    <p class="section-desc" style="font-size:1.15rem; line-height:1.75;">By combining tech-forward interactive checklists with structured government registry directives, we aim to convert complex statutory mandates into clickable, visual, and actionable roadmaps. We believe every Indian should know their rights and act with confidence.</p>
+    <a href="about.html" class="btn btn-secondary" style="margin-top: 1.5rem;">Read Our Story <i data-lucide="arrow-right"></i></a>
+  </section>
+
+  <!-- SECTION 11: FUTURE ROADMAP -->
+  <section class="section-wrapper">
+    <div class="section-header reveal">
+      <span class="section-label">Future Timeline</span>
+      <h2 class="section-title">AajNyay Development Roadmap</h2>
+      <p class="section-desc text-muted">Our project roadmap timeline to incorporate advanced AI and community support loops.</p>
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-badge"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Phase 1 (Completed)</span>
+          <h3>Interactive GPS Core</h3>
+          <p>Setting up decision nodes, statutory rights registers, and offline action plan layouts.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item reveal">
+        <div class="timeline-badge"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Phase 2 (Q3 2026)</span>
+          <h3>Document Analysis & RAG</h3>
+          <p>Incorporating LLM parser loops to read lease drafts, offer letters, and flag predatory clauses.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item reveal">
+        <div class="timeline-badge"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Phase 3 (Q4 2026)</span>
+          <h3>Multilingual Voice Guide</h3>
+          <p>Voice-first inputs and translations to support Hindi, Tamil, Telugu, Bengali, and Marathi speech loops.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item reveal">
+        <div class="timeline-badge"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">Phase 4 (Q1 2027)</span>
+          <h3>Verified Lawyer Referrals</h3>
+          <p>Secure referral loops linking citizens with pro-bono advocates and Legal Aid services locally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <div class="logo-icon" style="width:1.8rem; height:1.8rem;">
+            <i data-lucide="scale" style="width:1rem; height:1rem;"></i>
+          </div>
+          Aaj<span>Nyay</span>
+        </a>
+        <p class="text-muted">India's Legal GPS. Helping citizens navigate legal procedures step-by-step.</p>
+      </div>
+      
+      <div class="footer-links-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="gps.html" class="footer-link">Legal GPS</a></li>
+          <li><a href="library.html" class="footer-link">Rights Library</a></li>
+          <li><a href="assistant.html" class="footer-link">AI Navigator</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links-col">
+        <h4>Resources</h4>
+        <ul class="footer-links">
+          <li><a href="emergency.html" class="footer-link">Emergency Directory</a></li>
+          <li><a href="about.html" class="footer-link">About & Roadmap</a></li>
+          <li><a href="privacy.html" class="footer-link">Privacy Policy</a></li>
+          <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li class="text-muted">Email: support@aajnyay.org</li>
+          <li class="text-muted">Location: New Delhi, India</li>
+          <li><a href="contact.html" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">Get Support</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved. Registered educational non-profit.</p>
+      <p class="text-muted" style="font-size:0.75rem;">AajNyay provides educational legal guidance and does not replace professional legal advice.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/gps.js"></script>
+  <script src="js/library.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/navigator.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/voice.js"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

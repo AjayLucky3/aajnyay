@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - AajNyay | India's Legal GPS</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1" style="opacity: 0.1;"></div>
+    <div class="mesh-glow mesh-glow-2" style="opacity: 0.1;"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gps.html" class="nav-link">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link">AI Navigator</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Register Card Form -->
+  <main class="section-wrapper" style="padding-top: 8rem; min-height: 80vh; display:flex; align-items:center; justify-content:center;">
+    
+    <div class="glass-panel reveal active" style="width: 100%; maxWidth: 450px; padding: 2.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--border);">
+      <div style="text-align:center; margin-bottom:2rem;">
+        <h2 style="font-size:1.8rem; color:var(--text-main); margin-bottom:0.5rem;">Create Account</h2>
+        <p class="text-muted">Register to save legal journeys and track resolving paths.</p>
+      </div>
+      
+      <form id="register-form" onsubmit="handleRegister(event)">
+        <div style="display:flex; flex-direction:column; gap:1.25rem;">
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:0.4rem; display:block;">Full Name</label>
+            <input type="text" id="reg-name" class="gps-text-input" placeholder="e.g. Rajesh Kumar" required>
+          </div>
+          
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:0.4rem; display:block;">Email Address</label>
+            <input type="email" id="reg-email" class="gps-text-input" placeholder="e.g. rajesh@example.com" required>
+          </div>
+          
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:0.4rem; display:block;">Password</label>
+            <input type="password" id="reg-password" class="gps-text-input" placeholder="Min. 6 characters" required>
+          </div>
+          
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:0.4rem; display:block;">Confirm Password</label>
+            <input type="password" id="reg-confirm" class="gps-text-input" placeholder="Re-enter password" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-full" style="margin-top:0.5rem;">Create Account <i data-lucide="user-plus"></i></button>
+        </div>
+      </form>
+      
+      <div style="text-align:center; margin-top:1.5rem; font-size:0.9rem;">
+        <span class="text-muted">Already have an account?</span>
+        <a href="login.html" style="color:var(--accent); font-weight:700; margin-left:0.25rem;">Sign In</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+    
+    async function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value;
+      const email = document.getElementById('reg-email').value;
+      const pass = document.getElementById('reg-password').value;
+      const confirm = document.getElementById('reg-confirm').value;
+      
+      if (pass !== confirm) {
+        window.showToast('Passwords do not match', 'error');
+        return;
+      }
+      
+      try {
+        await window.AajNyayAuth.register(name, email, pass);
+        window.showToast('Account registered successfully! Redirecting to login...', 'success');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1200);
+      } catch (err) {
+        // Handled inside auth.js toast
+      }
+    }
+  </script>
+</body>
+</html>

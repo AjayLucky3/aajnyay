@@ -1,0 +1,6 @@
+aajnyay.db
+__pycache__/
+*.log
+.git/
+.agents/
+.DS_Store

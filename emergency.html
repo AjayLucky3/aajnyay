@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Help - AajNyay | Indian Citizens National Helplines</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1"></div>
+    <div class="mesh-glow mesh-glow-2"></div>
+    <div class="mesh-glow mesh-glow-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gps.html" class="nav-link">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link">AI Navigator</a></li>
+        <li><a href="emergency.html" class="nav-link active">Emergency Help</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login / Sign Up <i data-lucide="log-in"></i></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Emergency Help Directory -->
+  <main class="section-wrapper" style="padding-top: 8rem; min-height: 85vh;">
+    
+    <div class="section-header reveal active" style="margin-bottom: 3.5rem; text-align: left; max-width: 100%;">
+      <span class="section-label" style="color:#ef4444;">National Hotlines</span>
+      <h2 class="section-title">Emergency Resources</h2>
+      <p class="section-desc">If you are facing active threats, financial cybercrime, or need immediate legal aid, use these official verified helplines. Calls from mobile devices will auto-dial.</p>
+    </div>
+
+    <!-- National Helplines Grid -->
+    <div class="emergency-grid" style="margin-bottom: 4rem;">
+      <div class="glass-card emergency-card reveal active">
+        <div class="emergency-tag"><span class="pulse-badge"></span> Cyber Crime Portal</div>
+        <div class="emergency-num">1930</div>
+        <p>Report online cyber banking fraud, digital transaction loops, identity thefts, or social media blackmail immediately to freeze destination accounts.</p>
+        <div class="emergency-actions">
+          <a href="tel:1930" class="btn btn-primary" style="background:#ef4444; box-shadow:none;"><i data-lucide="phone"></i> Call 1930</a>
+          <button onclick="navigator.clipboard.writeText('1930'); window.showToast('Helpline number copied', 'success');" class="btn btn-secondary"><i data-lucide="copy"></i> Copy</button>
+        </div>
+      </div>
+      
+      <div class="glass-card emergency-card reveal active">
+        <div class="emergency-tag"><span class="pulse-badge"></span> Women Helpline</div>
+        <div class="emergency-num">1091</div>
+        <p>Providing 24-hour immediate assistance, guidance, legal protection references, and emergency evacuation for women facing domestic violence or abuse.</p>
+        <div class="emergency-actions">
+          <a href="tel:1091" class="btn btn-primary" style="background:#ef4444; box-shadow:none;"><i data-lucide="phone"></i> Call 1091</a>
+          <button onclick="navigator.clipboard.writeText('1091'); window.showToast('Helpline number copied', 'success');" class="btn btn-secondary"><i data-lucide="copy"></i> Copy</button>
+        </div>
+      </div>
+      
+      <div class="glass-card emergency-card reveal active">
+        <div class="emergency-tag"><span class="pulse-badge"></span> Child Helpline</div>
+        <div class="emergency-num">1098</div>
+        <p>National 24x7 emergency phone outreach service for children in distress, run by the Ministry of Women and Child Development (WCD).</p>
+        <div class="emergency-actions">
+          <a href="tel:1098" class="btn btn-primary" style="background:#ef4444; box-shadow:none;"><i data-lucide="phone"></i> Call 1098</a>
+          <button onclick="navigator.clipboard.writeText('1098'); window.showToast('Helpline number copied', 'success');" class="btn btn-secondary"><i data-lucide="copy"></i> Copy</button>
+        </div>
+      </div>
+
+      <div class="glass-card emergency-card reveal active">
+        <div class="emergency-tag"><span class="pulse-badge"></span> Senior Citizen (Elderline)</div>
+        <div class="emergency-num">14567</div>
+        <p>Elderline offers support, rescue links, legal information guidance, and grievance redressal for elderly citizens across India.</p>
+        <div class="emergency-actions">
+          <a href="tel:14567" class="btn btn-primary" style="background:#ef4444; box-shadow:none;"><i data-lucide="phone"></i> Call 14567</a>
+          <button onclick="navigator.clipboard.writeText('14567'); window.showToast('Helpline number copied', 'success');" class="btn btn-secondary"><i data-lucide="copy"></i> Copy</button>
+        </div>
+      </div>
+      
+      <div class="glass-card emergency-card reveal active" style="border-left-color: var(--primary);">
+        <div class="emergency-tag" style="color: var(--primary);"><span class="pulse-badge" style="background-color: var(--primary);"></span> Legal Aid Helpline</div>
+        <div class="emergency-num">15100</div>
+        <p>National Legal Services Authority (NALSA) toll-free number. Offers free legal aid, advice, and court attorney representation to weaker sections.</p>
+        <div class="emergency-actions">
+          <a href="tel:15100" class="btn btn-primary" style="background:var(--primary); box-shadow:none;"><i data-lucide="phone"></i> Call 15100</a>
+          <button onclick="navigator.clipboard.writeText('15100'); window.showToast('Helpline number copied', 'success');" class="btn btn-secondary"><i data-lucide="copy"></i> Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Free Legal Aid Services Section -->
+    <div class="glass-panel reveal active" style="margin-bottom: 2rem;">
+      <h3 style="font-size: 1.4rem; margin-bottom: 1rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="landmark" style="color:var(--accent);"></i> Free Legal Aid & Services</h3>
+      <p style="margin-bottom: 1.5rem;">Under Section 12 of the Legal Services Authorities Act, 1987, eligible citizens (including women, children, SC/ST members, industrial workmen, and persons earning under a specific income cap) have a statutory right to receive free legal aid. This includes attorney representation in courts, drafting petitions, and counseling.</p>
+      
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
+        <div class="glass-card" style="padding:1.25rem;">
+          <h4>National (NALSA)</h4>
+          <p style="font-size:0.9rem; margin-top:0.25rem;">Formulates legal services directives, coordinates state bureaus, and governs national lok adalats.</p>
+          <a href="https://nalsa.gov.in" target="_blank" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem; margin-top:0.75rem; width:fit-content;">Visit NALSA Portal</a>
+        </div>
+        
+        <div class="glass-card" style="padding:1.25rem;">
+          <h4>State (SALSA)</h4>
+          <p style="font-size:0.9rem; margin-top:0.25rem;">Each state has a State Legal Services Authority. Coordinates state-level legal clinics and panel lawyers.</p>
+          <a href="https://nalsa.gov.in/state-authorities" target="_blank" class="btn btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem; margin-top:0.75rem; width:fit-content;">Find State Authority</a>
+        </div>
+        
+        <div class="glass-card" style="padding:1.25rem;">
+          <h4>District (DLSA)</h4>
+          <p style="font-size:0.9rem; margin-top:0.25rem;">Located in every District Court complex. Walk-in centers offer on-the-spot legal advice and counsel appointments.</p>
+          <button onclick="window.showToast('Please visit your nearest District Court Complex to access the DLSA desk.', 'info')" class="btn btn-primary" style="font-size:0.8rem; padding:0.4rem 0.8rem; margin-top:0.75rem; width:fit-content;">Locate DLSA Desk</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved. Registered educational helpline index.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/voice.js"></script>
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

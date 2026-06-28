@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rights Library - AajNyay | Indian Citizens Legal Encyclopedia</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Mesh background layers -->
+  <div class="bg-mesh-container">
+    <div class="mesh-glow mesh-glow-1"></div>
+    <div class="mesh-glow mesh-glow-2"></div>
+    <div class="mesh-glow mesh-glow-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i data-lucide="scale"></i>
+        </div>
+        Aaj<span>Nyay</span>
+      </a>
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gps.html" class="nav-link">Legal GPS</a></li>
+        <li><a href="library.html" class="nav-link active">Rights Library</a></li>
+        <li><a href="assistant.html" class="nav-link">AI Navigator</a></li>
+        <li><a href="emergency.html" class="nav-link">Emergency Help</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <svg class="sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="moon-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary">Login / Sign Up <i data-lucide="log-in"></i></a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Rights Library Hub -->
+  <main class="section-wrapper" style="padding-top: 8rem; min-height: 85vh;">
+    
+    <div class="library-page-grid">
+      <!-- SIDEBAR: Search and Filters -->
+      <aside class="library-sidebar">
+        <div class="glass-panel" style="padding: 1.5rem;">
+          <h3 style="font-size:1.15rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="filter" style="color:var(--accent);"></i> Search & Filter</h3>
+          
+          <div class="search-box" style="margin-bottom:1.5rem;">
+            <i data-lucide="search"></i>
+            <input type="text" class="search-input" id="library-search-input" placeholder="Search rights or laws...">
+          </div>
+          
+          <div class="filter-group">
+            <button class="filter-btn active" onclick="filterLibrary('all', this)">All Categories <span>8</span></button>
+            <button class="filter-btn" onclick="filterLibrary('consumer', this)">Consumer Rights <i data-lucide="shopping-bag" style="width:1rem; height:1rem;"></i></button>
+            <button class="filter-btn" onclick="filterLibrary('labour', this)">Labour Rights <i data-lucide="briefcase" style="width:1rem; height:1rem;"></i></button>
+            <button class="filter-btn" onclick="filterLibrary('womens', this)">Women's Rights <i data-lucide="user" style="width:1rem; height:1rem;"></i></button>
+            <button class="filter-btn" onclick="filterLibrary('property', this)">Property Rights <i data-lucide="home" style="width:1rem; height:1rem;"></i></button>
+            <button class="filter-btn" onclick="filterLibrary('cyber', this)">Cyber Crime & Privacy <i data-lucide="shield" style="width:1rem; height:1rem;"></i></button>
+            <button class="filter-btn" onclick="filterLibrary('student', this)">Student Rights <i data-lucide="graduation-cap" style="width:1rem; height:1rem;"></i></button>
+            <button class="filter-btn" onclick="filterLibrary('senior', this)">Senior Citizens <i data-lucide="users" style="width:1rem; height:1rem;"></i></button>
+            <button class="filter-btn" onclick="filterLibrary('rti', this)">RTI Rights <i data-lucide="file-text" style="width:1rem; height:1rem;"></i></button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN: Grid display or Expanded Category -->
+      <section id="library-main-content" style="flex:1;">
+        <div id="library-cards-container" class="library-grid">
+          <!-- Populated dynamically by js/library.js -->
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p class="text-muted">&copy; 2026 AajNyay. All rights reserved. Educational legal awareness registry.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/main.js"></script>
+  <script src="js/library.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/voice.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+    
+    // Check URL parameters for direct category expansion
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catId = urlParams.get('cat');
+      if (catId) {
+        setTimeout(() => {
+          expandLibraryCategory(catId);
+        }, 300);
+      }
+    });
+  </script>
+</body>
+</html>
