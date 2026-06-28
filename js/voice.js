@@ -55,6 +55,7 @@ function initVoiceAssistant() {
   voiceBtn.style.border = '2px solid var(--accent)';
   voiceBtn.style.boxShadow = '0 10px 25px rgba(255, 153, 51, 0.3)';
   voiceBtn.style.background = 'var(--glass-bg)';
+  voiceBtn.style.padding = '0';
   voiceBtn.style.transition = 'all 0.3s ease';
   
   voiceBtn.innerHTML = `

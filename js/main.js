@@ -489,17 +489,9 @@ function initDepthScrollTransitions() {
       dist = Math.max(-1.5, Math.min(1.5, dist));
       
       if (el.classList.contains('active')) {
-        if (el.classList.contains('reveal-3d')) {
-          // Dynamic scale-down and tilt back as card moves away from center viewport
-          const translateZ = -Math.abs(dist) * 90;
-          const rotateX = dist * 12;
-          const translateY = dist * 20; // Parallax delay
-          el.style.transform = `perspective(1200px) translate3d(0, ${translateY}px, ${translateZ}px) rotateX(${rotateX}deg)`;
-        } else {
-          // Standard reveal elements get light scroll offset
-          const translateY = dist * 12;
-          el.style.transform = `translateY(${translateY}px)`;
-        }
+        // Keep all elements flat, solid, and stable on scroll using standard vertical offset
+        const translateY = dist * 12;
+        el.style.transform = `translateY(${translateY}px)`;
       }
     });
   }
